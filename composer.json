@@ -1,0 +1,18 @@
+{
+  "name": "rumur/autowire",
+  "description": "Simple PHP autowiring functionality.",
+  "keywords": ["wordpress", "plugin", "autowire", "autowiring"],
+  "homepage": "https://github.com/rumur/autowire",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "rumur",
+      "email": "rumur.dev@gmail.com"
+    }
+  ],
+  "autoload" : {
+    "psr-4" : {
+      "Rumur\\Autowiring\\": "src/"
+    }
+  }
+}
