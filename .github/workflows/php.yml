@@ -1,0 +1,27 @@
+name: Testing
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          php-versions: '7.4'
+
+      - name: Install composer dependencies
+        run: composer install
+
+      - name: Run test suite
+        run: composer run-script test
+
+      - name: Run php sniff
+        run: composer run-script sniff
