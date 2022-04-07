@@ -137,7 +137,16 @@ class Autowire
         if (( is_string($cb) && function_exists($cb) ) || $cb instanceof \Closure) {
             $reflection = new ReflectionFunction($cb);
         } else {
-            [ $obj, $method ] = is_string($cb) ? explode('::', $cb) : $cb;
+            $obj = $cb;
+            $method = '__invoke';
+
+            if (is_array($cb)) {
+                [ $obj, $method ] = $cb;
+            }
+
+            if (is_string($cb)) {
+                [ $obj, $method ] = explode('::', $cb);
+            }
 
             $reflection = new \ReflectionMethod($obj, $method);
         }
